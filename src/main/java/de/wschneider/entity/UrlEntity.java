@@ -3,7 +3,6 @@ package de.wschneider.entity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "url_mapping")
@@ -13,7 +12,6 @@ public class UrlEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotNull
     private String hash;
 
     @NotEmpty

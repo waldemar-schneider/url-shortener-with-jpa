@@ -23,7 +23,8 @@ layout 'layout.tpl', title: "url managing: $title", content: contents {
         urls.each { url ->
             tr {
                 td url.id
-                td { a(href: "/url/${url.id}/edit", "${url.hash}") }
+                td { a(href: "/url/${url.id}", "${url.hash}") }
+                td { a(href: "/url/${url.id}", "${url.url}") }
                 td {
                     form (action: "/url/${url.id}/delete", method: 'post') {
                         input(name: '_method', value: 'delete', type: 'hidden')

@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.Matchers.hasSize;
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -55,5 +56,14 @@ public class UrlControllerTest {
                 .andExpect(model().attribute("urls", notNullValue()))
                 .andExpect(model().attribute("urls", hasSize(1)))
                 ;
+    }
+
+    @Test
+    public void testSaveOneCorrectUrl() throws Exception {
+        // when
+        final ResultActions perform = this.mockMvc.perform(post("/url/save").param("url", "https://www.google.de"));
+
+        // then
+        perform.andExpect(status().isFound());
     }
 }
